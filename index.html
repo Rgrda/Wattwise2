@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Appliance Usage Estimator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="main-page" class="page active">
+    <div class="content-wrapper">
+      <img src="Logo1.png" alt="WattWise Logo" id="logo" />
+      <p>Track your consumption, and watt wise in mastering your savings.</p>
+      <button id="get-started-btn">Get Started</button>
+    </div>
+  </div>
+
+  <div id="form-page" class="page">
+    <h2>Power Time Usage Estimator</h2>
+
+    <h3>Appliances with Constant Time Usage</h3>
+    <div id="constant-appliances">
+      <div class="appliance constant">
+        <input type="text" class="appliance-input" placeholder="Type or select appliance" list="appliance-suggestions" />
+        <div class="input-group">
+          <input type="number" placeholder="Watts (W)" />
+          <div class="capacity-input">
+            <span>use at</span>
+            <input type="number" placeholder="%" min="0" max="100" />
+            <span>capacity</span>
+          </div>
+        </div>
+        <input type="number" placeholder="Hours per Day" />
+        <button class="remove-btn">X</button>
+      </div>
+    </div>
+    <button id="add-constant-btn">+ Add Constant Appliance</button>
+
+    <hr />
+
+    <h3>Appliances to Distribute Time</h3>
+    <div id="appliance-list">
+      <div class="appliance">
+        <input type="text" class="appliance-input" placeholder="Type or select appliance" list="appliance-suggestions" />
+        <div class="input-group">
+          <input type="number" placeholder="Watts (W)" />
+          <div class="capacity-input">
+            <span>use at</span>
+            <input type="number" placeholder="%" min="0" max="100" />
+            <span>capacity</span>
+          </div>
+        </div>
+        <button class="remove-btn">X</button>
+      </div>
+    </div>
+    <div class="button-group">
+      <button id="add-appliance-btn">+ Add Appliance</button>
+      <button id="clear-btn">Clear All</button>
+    </div>
+
+    <input type="number" id="kwhCost" placeholder="Cost per kWh (₱)" />
+    <input type="number" id="billAmount" placeholder="Enter Monthly Bill (₱)" />
+
+    <button id="estimate-btn">Get Usage Suggestions</button>
+  </div>
+
+  <div id="result-page" class="page">
+    <h2>Estimated Appliance Usage</h2>
+    <div id="summary">
+      <p><strong>kWh Rate:</strong> ₱<span id="rate-display">0</span> per kWh</p>
+      <p><strong>Monthly Budget:</strong> ₱<span id="budget-display">0</span></p>
+    </div>
+    <table id="results-table">
+      <thead>
+        <tr>
+          <th>Appliance</th>
+          <th>Watts</th>
+          <th class="green-col">Suggested Daily Time (hrs)</th>
+          <th>Daily Usage (kWh)</th>
+          <th>Monthly Usage (kWh)</th>
+          <th>Weekly Cost (₱)</th>
+          <th>Monthly Cost (₱)</th>
+        </tr>
+      </thead>
+      <tbody id="results-body"></tbody>
+    </table>
+    <div id="totals" class="summary">
+      <p><strong>Total Daily Usage:</strong> <span id="total-daily-kwh">0.00</span> kWh</p>
+      <p><strong>Total Monthly Usage:</strong> <span id="total-monthly-kwh">0.00</span> kWh</p>
+      <p><strong>Total Monthly Cost:</strong> <span id="total-cost">₱0.00</span></p>
+    </div>
+    <button id="back-btn">Estimate New</button>
+  </div>
+
+  <datalist id="appliance-suggestions">
+    <optgroup label="Household">
+      <option value="TV">TV</option>
+      <option value="Light">Light</option>
+      <option value="Fan (Ceiling)">Fan (Ceiling)</option>
+      <option value="Fan (stand/wall)">Fan (stand/wall)</option>
+      <option value="Air conditioner (HVAC)">Air conditioner (HVAC)</option>
+      <option value="Air conditioner (window)">Air conditioner (window)</option>
+      <option value="Washing machine">Washing machine</option>
+    </optgroup>
+    <optgroup label="Kitchen">
+      <option value="Electric stove">Electric stove</option>
+      <option value="Refrigerator">Refrigerator</option>
+      <option value="Oven">Oven</option>
+      <option value="Microwave oven">Microwave oven</option>
+      <option value="Electric heater/kettle">Electric heater/kettle</option>
+      <option value="Rice cooker">Rice cooker</option>
+      <option value="Coffee maker">Coffee maker</option>
+      <option value="Toaster">Toaster</option>
+      <option value="Air fryer">Air fryer</option>
+    </optgroup>
+    <optgroup label="Others">
+      <option value="Clothes Iron">Clothes Iron</option>
+      <option value="Blower (hair dryer)">Blower (hair dryer)</option>
+    </optgroup>
+  </datalist>
+
+  <script src="script.js"></script>
+</body>
+</html>
